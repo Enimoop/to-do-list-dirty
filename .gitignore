@@ -49,3 +49,6 @@ pip-log.txt
 
 # --- zip-----
 *.zip
+
+# --- Ruff cache ---
+.ruff-cache/
