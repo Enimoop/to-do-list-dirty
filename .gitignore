@@ -1,0 +1,48 @@
+# --- Django ---
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# --- Environnements virtuels ---
+env/
+venv/
+ENV/
+.venv/
+
+# --- Fichiers sensibles ---
+*.env
+.env.*
+
+# --- PyCharm / VSCode ---
+.idea/
+.vscode/
+*.code-workspace
+
+# --- Byte-compiled / cache ---
+*.py[cod]
+*$py.class
+
+# --- Staticfiles ---
+staticfiles/
+static/
+
+# --- Migrations compilées (garder seulement le dossier, pas les fichiers pycache) ---
+*/migrations/__pycache__/
+
+# --- Tests ---
+.coverage
+coverage.xml
+htmlcov/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Pip ---
+pip-wheel-metadata/
+pip-log.txt
