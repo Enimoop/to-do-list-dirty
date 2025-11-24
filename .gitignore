@@ -37,6 +37,7 @@ static/
 # --- Tests ---
 .coverage
 coverage.xml
+coverage.lcov
 htmlcov/
 
 # --- OS ---
