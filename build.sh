@@ -34,6 +34,15 @@ git rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
   exit 1
 }
 
+# ---- Ruff lint ----
+echo "🔍 Running Ruff..."
+if ! py -3.12 -m pipenv run ruff check .; then
+    echo "Ruff lint failed. Fix the issues above before building."
+    exit 1
+fi
+echo "Ruff passed"
+
+
 # ---- Update APP_VERSION ----
 echo "Update version ${VERSION_VAR} -> ${VERSION}"
 
