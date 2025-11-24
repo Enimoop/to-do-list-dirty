@@ -42,6 +42,13 @@ if ! py -3.12 -m pipenv run ruff check .; then
 fi
 echo "Ruff passed"
 
+# ---- Django tests ----
+echo "🧪 Running Django tests..."
+if ! py -3.12 -m pipenv run python manage.py test; then
+    echo "⚠️ Django tests failed — continuing anyway (non-blocking)"
+else
+    echo "Tests passed"
+fi
 
 # ---- Update APP_VERSION ----
 echo "Update version ${VERSION_VAR} -> ${VERSION}"
