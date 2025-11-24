@@ -46,3 +46,6 @@ Thumbs.db
 # --- Pip ---
 pip-wheel-metadata/
 pip-log.txt
+
+# --- zip-----
+*.zip
