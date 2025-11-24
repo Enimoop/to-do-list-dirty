@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import *
+from django.conf import settings
 # Create your views here.
 def index(request):
 	tasks = Task.objects.all()
@@ -15,7 +16,7 @@ def index(request):
 			form.save()
 		return redirect('/')
 
-	context= {'tasks':tasks,'form':form}
+	context= {'tasks':tasks,'form':form, 'APP_VERSION': settings.APP_VERSION}
 	return render(request, 'tasks/list.html',context)
 
 def updateTask(request,pk):
