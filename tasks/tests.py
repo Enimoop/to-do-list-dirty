@@ -1,5 +1,10 @@
-from django.test import TestCase
+import json
+import tempfile
+from pathlib import Path
+
 from django.conf import settings
+from django.core.management import call_command
+from django.test import TestCase
 
 from tasks.models import Task
 
@@ -59,3 +64,22 @@ class UrlTests(TestCase):
         response = self.client.post(url)
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Task.objects.filter(id=self.task.id).exists())
+
+class ImportDatasetTests(TestCase):
+    def test_import_real_dataset_json(self):
+        """Teste que l'import utilise bien le vrai fichier dataset.json du projet."""
+        
+        dataset_path = Path(settings.BASE_DIR) / "dataset.json"
+        self.assertTrue(dataset_path.exists(), "dataset.json manquant !")
+
+        call_command("import_dataset", path=str(dataset_path))
+
+        import json
+        data = json.loads(dataset_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(Task.objects.count(), len(data))
+
+        for row in data:
+            title = row["title"]
+            complete = row["complete"]
+            self.assertTrue(Task.objects.filter(title=title, complete=complete).exists())

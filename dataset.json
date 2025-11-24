@@ -1,0 +1,5 @@
+[
+  { "title": "Buy milk", "complete": false },
+  { "title": "Finish Django exercices", "complete": false },
+  { "title": "Call client for feedback", "complete": true }
+]
