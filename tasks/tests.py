@@ -1,5 +1,4 @@
 import json
-import tempfile
 from pathlib import Path
 
 from django.conf import settings
@@ -74,7 +73,6 @@ class ImportDatasetTests(TestCase):
 
         call_command("import_dataset", path=str(dataset_path))
 
-        import json
         data = json.loads(dataset_path.read_text(encoding="utf-8"))
 
         self.assertEqual(Task.objects.count(), len(data))
