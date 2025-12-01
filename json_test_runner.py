@@ -28,7 +28,7 @@ class JsonTestRunner(DiscoverRunner):
 
     def get_resultclass(self):
         parent = super().get_resultclass()
-        base = parent or unittest.TextTestResultnt
+        base = parent or unittest.TextTestResult
 
         runner = self
 
