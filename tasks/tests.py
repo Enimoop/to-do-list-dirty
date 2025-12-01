@@ -7,6 +7,7 @@ from django.test import TestCase
 
 from tasks.models import Task
 
+
 def tc(case_id):
     def decorator(func):
         setattr(func, "test_case_id", case_id)

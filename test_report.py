@@ -4,7 +4,6 @@ from pathlib import Path
 
 import yaml
 
-
 YAML_PATH = Path("test_list.yaml")
 JSON_PATH = Path("result_test_auto.json")
 
