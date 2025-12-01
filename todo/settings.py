@@ -125,4 +125,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+TEST_RUNNER = "json_test_runner.JsonTestRunner"
+
 APP_VERSION = "1.2.0"
