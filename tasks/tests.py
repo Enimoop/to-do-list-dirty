@@ -77,6 +77,57 @@ class UrlTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Task.objects.filter(id=self.task.id).exists())
 
+    @tc('TCO19')
+    def test_home_page_post_creates_priority_task_when_flag_set(self):
+        """
+        POST / avec priority=on doit créer une tâche avec priority=True.
+        """
+        response = self.client.post("/", data={"title": "Urgent", "priority": "on"})
+        self.assertEqual(response.status_code, 302)
+
+        task = Task.objects.get(title="Urgent")
+        self.assertTrue(
+            getattr(task, "priority", None),
+            "La tâche créée avec priority=on devrait avoir priority=True"
+        )
+
+    @tc('TCO20')
+    def test_update_task_can_change_priority(self):
+        """
+        POST /update_task/<id>/ doit permettre de changer priority.
+        """
+        task = Task.objects.create(title="To update", priority=False)
+        url = f"/update_task/{task.id}/"
+
+        response = self.client.post(url, data={"title": "To update", "priority": "on"})
+        self.assertEqual(response.status_code, 302)
+
+        task.refresh_from_db()
+        self.assertTrue(task.priority)
+
+    @tc('TCO21')
+    def test_index_orders_tasks_with_priority_first(self):
+        """
+        Les tâches prioritaires doivent apparaître en premier sur la home.
+        """
+        t1 = Task.objects.create(title="Low 1", priority=False)
+        t2 = Task.objects.create(title="High 1", priority=True)
+        t3 = Task.objects.create(title="Low 2", priority=False)
+        t4 = Task.objects.create(title="High 2", priority=True)
+
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+
+        tasks_in_context = list(response.context["tasks"])
+
+        priorities = [t.priority for t in tasks_in_context]
+        self.assertEqual(
+            priorities,
+            sorted(priorities, reverse=True),
+            "Les tâches prioritaires devraient être en haut de la liste."
+        )
+
+
 class ImportDatasetTests(TestCase):
     @tc("TC008")
     def test_import_real_dataset_json(self):
@@ -95,3 +146,21 @@ class ImportDatasetTests(TestCase):
             title = row["title"]
             complete = row["complete"]
             self.assertTrue(Task.objects.filter(title=title, complete=complete).exists())
+
+
+class TaskPriorityModelTests(TestCase):
+    @tc("TC018")
+    def test_task_has_priority_field_default_false(self):
+        task = Task.objects.create(title="Normal task")
+
+        self.assertTrue(
+            hasattr(task, "priority"),
+            "Le modèle Task doit avoir un champ 'priority'.",
+        )
+
+        self.assertIs(
+            task.priority,
+            False,
+            "Le champ priority devrait être False par défaut.",
+        )
+

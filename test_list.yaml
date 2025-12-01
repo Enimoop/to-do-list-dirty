@@ -98,3 +98,20 @@ tests:
   - test_case_id: "TC017"
     type: auto-selenium
     nom: "Impact croisé: suppression de la tâche B ne supprime pas la tâche A"
+  
+  - test_case_id: "TC018"
+    type: auto-unittest
+    nom: "Modèle Task : champ priority avec valeur par défaut à False"
+
+  - test_case_id: "TC019"
+    type: auto-unittest
+    nom: "Création de tâche prioritaire via POST /"
+
+  - test_case_id: "TC020"
+    type: auto-unittest
+    nom: "Mise à jour d'une tâche : modification du flag priority"
+
+  - test_case_id: "TC021"
+    type: auto-unittest
+    nom: "Home / : les tâches priority=True apparaissent avant les autres"
+

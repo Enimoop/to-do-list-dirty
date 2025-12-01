@@ -6,6 +6,12 @@
     "outcome": "success"
   },
   {
+    "test_case_id": "TC018",
+    "test_name": "test_task_has_priority_field_default_false",
+    "test_class": "TaskPriorityModelTests",
+    "outcome": "failure"
+  },
+  {
     "test_case_id": "TC006",
     "test_name": "test_delete_task_get",
     "test_class": "UrlTests",
@@ -24,6 +30,12 @@
     "outcome": "success"
   },
   {
+    "test_case_id": "TCO19",
+    "test_name": "test_home_page_post_creates_priority_task_when_flag_set",
+    "test_class": "UrlTests",
+    "outcome": "failure"
+  },
+  {
     "test_case_id": "TC002",
     "test_name": "test_home_page_post_creates_task_and_redirects",
     "test_class": "UrlTests",
@@ -34,6 +46,18 @@
     "test_name": "test_home_page_post_invalid_form_redirects_without_creating",
     "test_class": "UrlTests",
     "outcome": "success"
+  },
+  {
+    "test_case_id": "TCO21",
+    "test_name": "test_index_orders_tasks_with_priority_first",
+    "test_class": "UrlTests",
+    "outcome": "error"
+  },
+  {
+    "test_case_id": "TCO20",
+    "test_name": "test_update_task_can_change_priority",
+    "test_class": "UrlTests",
+    "outcome": "error"
   },
   {
     "test_case_id": "TC004",
