@@ -1,0 +1,89 @@
+tests:
+  - test_case_id: TC001
+    type: auto-unittest
+    nom: "GET / – La page d’accueil s’affiche correctement"
+    objectif: "Vérifier que la page répond 200 et contient APP_VERSION."
+    implemente_par: "test_home_page_get"
+
+  - test_case_id: TC002
+    type: auto-unittest
+    nom: "POST / – Création de tâche valide"
+    objectif: "Vérifier qu’un POST valide crée une nouvelle tâche et redirige (302)."
+    implemente_par: "test_home_page_post_creates_task_and_redirects"
+
+  - test_case_id: TC003
+    type: auto-unittest
+    nom: "POST / – Formulaire invalide (titre vide)"
+    objectif: "S’assurer qu’aucune tâche n’est créée si title=\"\"."
+    implemente_par: "test_home_page_post_invalid_form_redirects_without_creating"
+
+  - test_case_id: TC004
+    type: auto-unittest
+    nom: "GET /update_task/<id>/ – Page de mise à jour"
+    objectif: "Vérifier que la page d’édition existe (HTTP 200)."
+    implemente_par: "test_update_task_get"
+
+  - test_case_id: TC005
+    type: auto-unittest
+    nom: "POST /update_task/<id>/ – Modification d’une tâche"
+    objectif: "S’assurer que la tâche est modifiée et que la vue redirige."
+    implemente_par: "test_update_task_post_updates_and_redirects"
+
+  - test_case_id: TC006
+    type: auto-unittest
+    nom: "GET /delete_task/<id>/ – Page de suppression"
+    objectif: "Vérifier que la page s’affiche (HTTP 200)."
+    implemente_par: "test_delete_task_get"
+
+  - test_case_id: TC007
+    type: auto-unittest
+    nom: "POST /delete_task/<id>/ – Suppression d’une tâche"
+    objectif: "Vérifier la suppression réelle en base et la redirection."
+    implemente_par: "test_delete_task_post_deletes_and_redirects"
+
+  - test_case_id: TC008
+    type: auto-unittest
+    nom: "import_dataset – Import du dataset JSON réel"
+    objectif: "Vérifier que la commande charge correctement toutes les tâches depuis dataset.json."
+    implemente_par: "test_import_real_dataset_json"
+
+  - test_case_id: TC009
+    type: auto-unittest
+    nom: "Contexte de la vue index : Présence de toutes les tâches"
+    objectif: "Vérifier que tasks dans le contexte contient toutes les tâches créées."
+
+  - test_case_id: TC010
+    type: auto-unittest
+    nom: "Ordre d’affichage des tâches"
+    objectif: "S’assurer que les tâches s’affichent dans l’ordre prévu (ex : ID décroissant)."
+
+  - test_case_id: TC011
+    type: auto-unittest
+    nom: "Test du modèle Task"
+    objectif:
+      - "Tester __str__"
+      - "Tester les valeurs par défaut (par ex : complete=False)"
+
+  - test_case_id: TC012
+    type: auto-unittest
+    nom: "Accès à update_task avec ID inexistant"
+    objectif: "Vérifier qu’un GET /update_task/9999/ renvoie une erreur contrôlée (idéalement 404)."
+
+  - test_case_id: TC013
+    type: auto-unittest
+    nom: "import_dataset – Chemin invalide"
+    objectif: "Vérifier que la commande gère proprement un chemin inexistant (exception attendue)."
+
+  - test_case_id: TC014
+    type: manuel
+    nom: "Front : Validation du formulaire (champ obligatoire)"
+    objectif: "Vérifier que le navigateur empêche ou bloque l’envoi d’un formulaire sans titre."
+
+  - test_case_id: TC015
+    type: manuel
+    nom: "Parcours complet CRUD (scénario utilisateur complet)"
+    objectif:
+      - "Créer une tâche"
+      - "La modifier"
+      - "La supprimer"
+      - "Vérifier que chaque étape fonctionne sans erreur et redirige correctement."
