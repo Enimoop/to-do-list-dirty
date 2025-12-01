@@ -110,10 +110,10 @@ class UrlTests(TestCase):
         """
         Les tâches prioritaires doivent apparaître en premier sur la home.
         """
-        t1 = Task.objects.create(title="Low 1", priority=False)
-        t2 = Task.objects.create(title="High 1", priority=True)
-        t3 = Task.objects.create(title="Low 2", priority=False)
-        t4 = Task.objects.create(title="High 2", priority=True)
+        Task.objects.create(title="Low 1", priority=False)
+        Task.objects.create(title="High 1", priority=True)
+        Task.objects.create(title="Low 2", priority=False)
+        Task.objects.create(title="High 2", priority=True)
 
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
