@@ -87,3 +87,14 @@ tests:
       - "La modifier"
       - "La supprimer"
       - "Vérifier que chaque étape fonctionne sans erreur et redirige correctement."
+
+  - test_case_id: TC016
+    type: auto-selenium
+    description: >
+      Se connecter manuellement à l'application, compter le nombre de tâches,
+      créer 10 tâches, supprimer 10 tâches, et vérifier que le nombre final
+      de tâches est identique au nombre initial.
+  
+  - test_case_id: "TC017"
+    type: auto-selenium
+    nom: "Impact croisé: suppression de la tâche B ne supprime pas la tâche A"
