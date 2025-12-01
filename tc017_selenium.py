@@ -3,9 +3,9 @@ import time
 from pathlib import Path
 
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 BASE_URL = "http://127.0.0.1:8000/"
