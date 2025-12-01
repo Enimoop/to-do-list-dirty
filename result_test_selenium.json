@@ -1,0 +1,12 @@
+[
+  {
+    "test_case_id": "TC016",
+    "name": "TC016 - CRUD 10 tâches via UI",
+    "outcome": "success"
+  },
+  {
+    "test_case_id": "TC017",
+    "name": "TC017 - Impact croisé: suppression de B ne supprime pas A",
+    "outcome": "success"
+  }
+]
