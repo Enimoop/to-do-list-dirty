@@ -70,5 +70,23 @@
     "test_name": "test_update_task_post_updates_and_redirects",
     "test_class": "UrlTests",
     "outcome": "success"
+  },
+  {
+    "test_case_id": "TC024",
+    "test_name": "test_delete_page_is_wcag_level_a",
+    "test_class": "AccessibilityTests",
+    "outcome": "success"
+  },
+  {
+    "test_case_id": "TC022",
+    "test_name": "test_home_is_wcag_level_a",
+    "test_class": "AccessibilityTests",
+    "outcome": "success"
+  },
+  {
+    "test_case_id": "TC023",
+    "test_name": "test_update_page_is_wcag_level_a",
+    "test_class": "AccessibilityTests",
+    "outcome": "success"
   }
 ]

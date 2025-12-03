@@ -115,3 +115,16 @@ tests:
     type: auto-unittest
     nom: "Home / : les tâches priority=True apparaissent avant les autres"
 
+  - test_case_id: TC022
+    type: auto-axe
+    description: Page home conforme WCAG 2.1 niveau A
+
+  - test_case_id: TC023
+    type: auto-axe
+    description: Page update conforme WCAG 2.1 niveau A
+
+  - test_case_id: TC024
+    type: auto-axe
+    description: Page delete conforme WCAG 2.1 niveau A
+
+

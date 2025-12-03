@@ -65,6 +65,7 @@ def detect_kind(entry):
     - 'manual'
     - 'auto-unittest'
     - 'auto-selenium'
+    - 'auto-axe'
     à partir du champ type du YAML.
     """
     raw_type = str(entry.get("type", "")).lower()
@@ -73,6 +74,8 @@ def detect_kind(entry):
         return "manual"
     if "selenium" in raw_type:
         return "auto-selenium"
+    if "axe" in raw_type or "access" in raw_type:
+        return "auto-axe"
     return "auto-unittest"
 
 
@@ -84,6 +87,8 @@ def display_type_from_kind(kind: str) -> str:
         return "auto"
     if kind == "auto-selenium":
         return "auto-selenium"
+    if kind == "auto-axe":
+        return "auto-axe"
     return "manual"
 
 
@@ -130,6 +135,8 @@ def main():
             # auto-selenium
             if kind == "auto-selenium":
                 outcome = selenium_results.get(tc_id)
+            elif kind == "auto-axe":
+                outcome = auto_results.get(tc_id)
             else:  # auto-unittest
                 outcome = auto_results.get(tc_id)
 
