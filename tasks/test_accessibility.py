@@ -1,14 +1,12 @@
 import json
 
-from django.test import LiveServerTestCase
-
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.common.exceptions import TimeoutException
-from webdriver_manager.chrome import ChromeDriverManager
-
 from axe_selenium_python import Axe
+from django.test import LiveServerTestCase
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 from tasks.models import Task
 from tasks.tests import tc
