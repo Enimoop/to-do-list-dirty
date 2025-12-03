@@ -53,3 +53,6 @@ pip-log.txt
 
 # --- Ruff cache ---
 .ruff-cache/
+
+# --- Axe reports ---
+axe_*.json
