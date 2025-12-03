@@ -1,6 +1,55 @@
-<p>Are you sure you want to delete "{{ item }}"?</p>
-<a href="{% url 'list' %}">Cancel</a>
-<form method="POST" action=""> 
-	{% csrf_token %}
-	<input type="submit" name="confirm">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete task</title>
+    <style>
+        .btn-access {
+            display: inline-block;
+            padding: 14px 22px; 
+            font-size: 18px;
+            margin: 10px;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .btn-cancel {
+            background-color: #6c757d
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        body {
+            background: white;
+            padding: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<p>Are you sure you want to delete « <strong>{{ item }}</strong> »?</p>
+
+<a href="{% url 'list' %}" 
+   class="btn-access btn-cancel"
+   aria-label="Cancel deletion">
+    Cancel
+</a>
+
+<form method="POST" action="" style="display:inline-block;">
+    {% csrf_token %}
+    <button type="submit"
+            name="confirm"
+            class="btn-access btn-delete"
+            aria-label="Confirmer la suppression">
+        Delete
+    </button>
 </form>
+
+</body>
+</html>

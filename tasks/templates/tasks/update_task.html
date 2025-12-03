@@ -1,7 +1,63 @@
-<h3>Update task</h3>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Update task</title>
 
-<form method="POST" action="">
-	{% csrf_token %}
-	{{ form }}
-	<input type="submit" name="Update Task">
-</form>
+    <style>
+        .btn-access {
+            display: inline-block;
+            padding: 14px 22px;
+            font-size: 18px;
+            margin-top: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn-update {
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        body {
+            background: #ffffff;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Update task</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        
+        {% for field in form %}
+            <div style="margin-bottom: 16px;">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label><br>
+                {{ field }}
+            </div>
+        {% endfor %}
+
+        <button type="submit"
+                class="btn-access btn-update"
+                aria-label="Valider la modification de la tâche">
+            Envoyer
+        </button>
+    </form>
+
+</body>
+</html>
