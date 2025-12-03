@@ -9,7 +9,14 @@
 <style>
 
 	body{
-		background-color: #3a86ff;
+		background-color: #0b1f33;
+	}
+
+	.app-title {
+		color: #ffffff;
+		font-size: 125px;
+		text-align: center;
+		text-shadow: -10px 0 black, 0 10px black, 10px 0 black, 0 -10px black;
 	}
 
 	input{
@@ -51,16 +58,21 @@
 		border-color: #e59400;
 	}
 
+	.form-group label {
+		display: block;
+		font-weight: 600;
+		margin-bottom: 4px;
+	}
+
 </style>
 </head>
 <body>
 <p style="text-align: right; color: white; font-size: 20px;"><b>Version {{APP_VERSION}}</b></p>
-<h1 style="text-align: center; color: #fb5607; font-size: 125px;        text-shadow: -10px 0 black, 0 10px black, 10px 0 black, 0 -10px black;
-
-"><b>TO DO LIST</b></h1>
+<h1 class="app-title"><b>TO DO LIST</b></h1>
 <div  class="center-column">
 	<form method="POST" action="/">
 		{% csrf_token %}
+		 <label for="id_title">Nouvelle tâche</label>
 		{{form.title}}
 		<input class="btn btn-info" type="submit" style="background-color:#00506e !important; border-color:#00374e !important; color:#fff !important;" name="Create Task">
 	</form>
