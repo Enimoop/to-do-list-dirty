@@ -21,6 +21,11 @@ The type used in this project are :
 
 - style – for formatting (no code change)
 
+Example : 
+```
+style: added new css for update button
+``` 
+
 ### Semantic Version
 We follow the Semantic Version rules : https://semver.org/
 
