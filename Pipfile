@@ -12,6 +12,7 @@ webdriver-manager = "*"
 [dev-packages]
 ruff = "*"
 coverage = "*"
+axe-selenium-python = "*"
 
 [requires]
 python_version = "3.12"
