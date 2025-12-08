@@ -9,6 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Notify CI start (Discord)
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+                payload=$(jq -n \
+                  --arg content "🚀 CI démarrée sur \`${{ github.repository }}\` (#${{ github.run_number }}) – ref \`${{ github.ref_name }}\` par **${{ github.actor }}**" \
+                  '{content: $content}')
+                curl -X POST -H "Content-Type: application/json" \
+                  -d "$payload" \
+                  "$DISCORD_WEBHOOK_URL"
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -81,3 +92,27 @@ jobs:
               issue_number: context.issue.number,
               body: finalBody,
             });
+            
+      - name: Notify CI success (Discord)
+        if: ${{ success() }}
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          payload=$(jq -n \
+            --arg content "✅ CI OK sur \`${{ github.repository }}\` (#${{ github.run_number }}) – ref \`${{ github.ref_name }}\`" \
+            '{content: $content}')
+          curl -X POST -H "Content-Type: application/json" \
+            -d "$payload" \
+            "$DISCORD_WEBHOOK_URL"
+      
+      - name: Notify CI failure (Discord)
+        if: ${{ failure() }}
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          payload=$(jq -n \
+            --arg content "❌ CI FAIL sur \`${{ github.repository }}\` (#${{ github.run_number }}) – ref \`${{ github.ref_name }}\`. Vérifie les logs : ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            '{content: $content}')
+          curl -X POST -H "Content-Type: application/json" \
+            -d "$payload" \
+            "$DISCORD_WEBHOOK_URL"
