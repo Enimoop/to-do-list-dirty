@@ -127,4 +127,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TEST_RUNNER = "json_test_runner.JsonTestRunner"
 
-APP_VERSION = "1.6.0"
+APP_VERSION = "1.7.0"
