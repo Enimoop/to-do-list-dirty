@@ -10,7 +10,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from tc017_selenium import RESULT_JSON
 
-
 BASE_URL = "http://127.0.0.1:8000/"
 TEST_CASE_ID = "TC016"
 
