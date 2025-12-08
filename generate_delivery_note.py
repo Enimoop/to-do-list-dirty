@@ -16,10 +16,14 @@ from reportlab.platypus import (
     TableStyle,
 )
 
+REPORTS_DIR = Path("reports")
+REPORTS_DIR.mkdir(exist_ok=True)
+PDF_PATH = REPORTS_DIR / "delivery_note.pdf"
+
 YAML_PATH = Path("test_list.yaml")
 JSON_AUTO_PATH = Path("result_test_auto.json")
 JSON_SELENIUM_PATH = Path("result_test_selenium.json")
-PDF_PATH = Path("delivery_note.pdf")
+
 
 
 def load_test_list():
