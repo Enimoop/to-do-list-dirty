@@ -9,10 +9,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 
-options = Options()
-options.add_argument("--headless=new")
-driver = webdriver.Chrome(options=options)
-
 BASE_URL = "http://127.0.0.1:8000/"
 TEST_CASE_ID = "TC017"
 RESULT_JSON = Path("result_test_selenium.json")
@@ -97,8 +93,18 @@ def run_tc017():
         * A (ID A) est toujours présente
         * B (ID B) n'est plus présente
     """
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    driver.maximize_window()
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
+
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()),
+        options=options,
+    )
+
 
     title_a = "E2E_Impact_A"
     title_b = "E2E_Impact_B"

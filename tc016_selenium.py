@@ -10,9 +10,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from tc017_selenium import RESULT_JSON
 
-options = Options()
-options.add_argument("--headless=new")
-driver = webdriver.Chrome(options=options)
 
 BASE_URL = "http://127.0.0.1:8000/"
 TEST_CASE_ID = "TC016"
@@ -54,8 +51,18 @@ def run_tc016():
     """
     Exécute le test E2E TC016 et renvoie 'success' ou 'failure'.
     """
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    driver.maximize_window()
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
+
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()),
+        options=options,
+    )
+
 
     try:
         driver.get(BASE_URL)
