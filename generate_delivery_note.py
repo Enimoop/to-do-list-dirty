@@ -9,11 +9,11 @@ from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import (
-    SimpleDocTemplate,
     Paragraph,
+    SimpleDocTemplate,
+    Spacer,
     Table,
     TableStyle,
-    Spacer,
 )
 
 YAML_PATH = Path("test_list.yaml")
