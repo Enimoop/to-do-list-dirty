@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inscription</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background-color: #0b1f33;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card-box {
+      width: 100%;
+      max-width: 420px;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .title {
+      text-align: center;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #0b1f33;
+    }
+
+    .btn-custom {
+      background-color: #00506e !important;
+      border-color: #00374e !important;
+      font-weight: 700;
+    }
+
+    .btn-custom:hover {
+      opacity: 0.9;
+    }
+
+    .footer-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card-box">
+    <h2 class="title">Créer un compte</h2>
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button class="btn btn-custom btn-block text-white" type="submit">
+        Créer le compte
+      </button>
+    </form>
+
+    <div class="footer-link">
+      Déjà un compte ?
+      <a href="{% url 'login' %}">Se connecter</a>
+    </div>
+  </div>
+
+</body>
+</html>
