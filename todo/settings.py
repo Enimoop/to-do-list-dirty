@@ -10,7 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from dotenv import load_dotenv
 from pathlib import Path
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(BASE_DIR / ".env")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -128,3 +134,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TEST_RUNNER = "json_test_runner.JsonTestRunner"
 
 APP_VERSION = "1.7.0"
+
+import os
+
+
+TMDB_API_KEY=os.getenv("TMDB_API_KEY")
+TMDB_REGION=os.getenv("TMDB_REGION")
+TMDB_LANGUAGE=os.getenv("TMDB_LANGUAGE")
+
+TMDB_NETFLIX_ID=os.getenv("TMDB_NETFLIX_ID")
+TMDB_PRIME_ID=os.getenv("TMDB_PRIME_ID")
+TMDB_APPLE_ID=os.getenv("TMDB_APPLE_ID")
